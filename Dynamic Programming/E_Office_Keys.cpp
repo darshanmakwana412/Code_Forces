@@ -1,7 +1,3 @@
-// One Template to code them all
-// One Template to solve them all
-//                         ~ Darshan Makwana
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -10,9 +6,7 @@ using namespace std;
 
 int solve() {
 
-    int N;
-    cin>>N;
-       
+    
     
     return 0;
 }
@@ -27,10 +21,7 @@ int main() {
         freopen("../output.txt", "w", stdout);
     #endif
 	
-    int T=1;
-    while(T--) {
-        solve();
-    }
+    solve();
 
     #ifndef ONLINE_JUDGE
         auto finish_time = chrono::high_resolution_clock::now();

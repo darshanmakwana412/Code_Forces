@@ -1,7 +1,3 @@
-// One Template to code them all
-// One Template to solve them all
-//                         ~ Darshan Makwana
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -10,9 +6,30 @@ using namespace std;
 
 int solve() {
 
-    int N;
-    cin>>N;
-       
+    int N,K, max_theorems = 0, theorems = 0;
+    cin>>N>>K;
+    vector<int> A(N+1,0), T(N+1,0), prefix_sum(N+1,0);
+
+    for(int i=1;i<=N;i++) {
+        cin>>A[i];
+    }
+    for(int i=1;i<=N;i++) {
+        cin>>T[i];
+    }
+    for(int i=1;i<=N;i++) {
+        if(!T[i]) {
+            prefix_sum[i] = prefix_sum[i-1] + A[i];
+        } else {
+            theorems += A[i];
+            prefix_sum[i] = prefix_sum[i-1];
+        }
+    }
+
+    for(int i=1;i<=N-K+1;i++) {
+        max_theorems = max(max_theorems, prefix_sum[i+K-1]-prefix_sum[i-1]);
+    }
+
+    cout<<max_theorems+theorems<<endl;
     
     return 0;
 }
@@ -27,10 +44,7 @@ int main() {
         freopen("../output.txt", "w", stdout);
     #endif
 	
-    int T=1;
-    while(T--) {
-        solve();
-    }
+    solve();
 
     #ifndef ONLINE_JUDGE
         auto finish_time = chrono::high_resolution_clock::now();

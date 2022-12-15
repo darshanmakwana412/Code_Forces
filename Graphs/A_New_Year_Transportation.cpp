@@ -1,7 +1,3 @@
-// One Template to code them all
-// One Template to solve them all
-//                         ~ Darshan Makwana
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -10,9 +6,17 @@ using namespace std;
 
 int solve() {
 
-    int N;
-    cin>>N;
-       
+    int N,T, current=0;
+    cin>>N>>T;
+    int A[N-1];
+    for(int i=0;i<N-1;i++) cin>>A[i];
+
+    while(1+current<T) {
+        current += A[current];
+    }
+
+    if(1+current==T) cout<<"YES"<<endl;
+    else cout<<"NO"<<endl;
     
     return 0;
 }

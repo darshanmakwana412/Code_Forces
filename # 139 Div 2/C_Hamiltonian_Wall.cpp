@@ -10,9 +10,28 @@ using namespace std;
 
 int solve() {
 
-    int N;
-    cin>>N;
-       
+    int M;
+    string R1,R2;
+    cin>>M>>R1>>R2;
+
+    if((R1[0]=='W')&&(R2[0]=='W')) {
+        cout<<"NO\n";
+        return 0;
+    }
+
+    for(int i=1;i<M;i++) {
+        if((R1[i]=='W')&&(R2[i]=='W')) {
+            cout<<"NO\n";
+            return 0;
+        } else {
+            if((R1[i]!=R1[i-1])&&(R2[i]!=R2[i-1])) {
+                cout<<"NO\n";
+                return 0;
+            } 
+        }
+    }
+
+    cout<<"YES\n";
     
     return 0;
 }
@@ -27,7 +46,8 @@ int main() {
         freopen("../output.txt", "w", stdout);
     #endif
 	
-    int T=1;
+    int T;
+    cin>>T;
     while(T--) {
         solve();
     }

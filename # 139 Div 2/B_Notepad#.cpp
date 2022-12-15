@@ -10,9 +10,27 @@ using namespace std;
 
 int solve() {
 
-    int N;
-    cin>>N;
-       
+    int N, operations=0;
+    string S;
+    cin>>N>>S;
+
+    for(int i=0;i<N;i++) {
+        int max_step=0;
+        for(int j=0;j<i;j++) {
+            int step=0;
+            for(int k=j;k<i;k++) {
+                if(S[i]!=S[j]) break;
+                step++;
+            }
+            max_step = max(max_step, step);
+        }
+        if(max_step>1) i += max_step-1;
+        operations++;
+        
+    }
+
+    if(operations<N) cout<<"YES\n";
+    else cout<<"NO\n";
     
     return 0;
 }
@@ -27,7 +45,8 @@ int main() {
         freopen("../output.txt", "w", stdout);
     #endif
 	
-    int T=1;
+    int T;
+    cin>>T;
     while(T--) {
         solve();
     }

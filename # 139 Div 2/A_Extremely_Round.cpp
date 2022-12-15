@@ -12,7 +12,13 @@ int solve() {
 
     int N;
     cin>>N;
-       
+    int L=0;
+    while(N/10) {
+        L++;
+        N = N/10;
+    }
+
+    cout<<N+9*L<<endl;
     
     return 0;
 }
@@ -27,7 +33,8 @@ int main() {
         freopen("../output.txt", "w", stdout);
     #endif
 	
-    int T=1;
+    int T;
+    cin>>T;
     while(T--) {
         solve();
     }

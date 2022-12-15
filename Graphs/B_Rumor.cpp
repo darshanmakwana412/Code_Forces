@@ -1,18 +1,46 @@
-// One Template to code them all
-// One Template to solve them all
-//                         ~ Darshan Makwana
-
 #include <bits/stdc++.h>
 using namespace std;
 
 #define endl "\n"
 #define ll long long int
 
+vector<vector<int>> villager(1e5 + 1);
+vector<bool> visited(1e5 + 1, false);
+vector<int> cost(1e5 + 1);
+
+int min_cost(int i) {
+
+    visited[i] = true;
+    for(auto conn: villager[i]) {
+        if(!visited[conn]) {
+            cost[i] = min(cost[i], min_cost(conn));
+        }
+    }
+
+    return cost[i];
+
+}
+
 int solve() {
 
-    int N;
-    cin>>N;
-       
+    int N,M,rumor_cost=0;
+    cin>>N>>M;
+
+    for(int i=1;i<=N;i++) cin>>cost[i];
+    for(int i=1;i<=M;i++) {
+        int V1,V2;
+        cin>>V1>>V2;
+        villager[V1].push_back(V2);
+        villager[V2].push_back(V1);
+    }
+
+    for(int i=1;i<=N;i++) {
+        if(!visited[i]) {
+            rumor_cost += min_cost(i);
+        }
+    }
+
+    cout<<rumor_cost<<endl;
     
     return 0;
 }

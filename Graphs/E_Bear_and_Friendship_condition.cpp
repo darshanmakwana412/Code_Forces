@@ -1,7 +1,3 @@
-// One Template to code them all
-// One Template to solve them all
-//                         ~ Darshan Makwana
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -10,9 +6,24 @@ using namespace std;
 
 int solve() {
 
-    int N;
-    cin>>N;
-       
+    int N,M,M1,M2;
+    cin>>N>>M;
+    vector<vector<int>> member(N+1);
+    vector<bool> visited(N+1, false);
+
+    for(int i=1;i<=M;i++) {
+        cin>>M1>>M2;
+        member[M1].push_back(M2);
+        member[M2].push_back(M1);
+    }
+
+    for(int i=1;i<=N;i++) {
+        if(!visited[i]) {
+            for(auto mem: member[i]) {
+                
+            }
+        }
+    }
     
     return 0;
 }
@@ -27,10 +38,7 @@ int main() {
         freopen("../output.txt", "w", stdout);
     #endif
 	
-    int T=1;
-    while(T--) {
-        solve();
-    }
+    solve();
 
     #ifndef ONLINE_JUDGE
         auto finish_time = chrono::high_resolution_clock::now();
